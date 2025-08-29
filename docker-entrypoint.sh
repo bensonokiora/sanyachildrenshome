@@ -31,13 +31,6 @@ if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
         mv /var/www/html/wp-config-prod.php /var/www/html/wp-config.php
     fi
 
-    # Initialize wp-content volume with content from Docker image if empty
-    if [ -d "/tmp/wp-content-init" ] && [ ! -f "/var/www/html/wp-content/.initialized" ]; then
-        echo "Initializing wp-content from Docker image..."
-        cp -r /tmp/wp-content-init/* /var/www/html/wp-content/
-        touch /var/www/html/wp-content/.initialized
-        echo "wp-content initialization complete"
-    fi
 
     # Set ownership of /var/www/html to www-data
     chown -R www-data:www-data /var/www/html
