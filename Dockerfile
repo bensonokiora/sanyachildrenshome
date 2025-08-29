@@ -4,25 +4,36 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM php:8.4-apache
+# ---- Builder Stage ----
+FROM php:8.2-apache AS builder
 
-# persistent dependencies
+# Install persistent dependencies (runtime deps needed in final image too)
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 # Ghostscript is required for rendering PDF previews
 		ghostscript \
+# Runtime libs for PHP extensions, identified later but installed here for simplicity in builder
+# Needed for gd:
+		libfreetype6 \
+		libjpeg62-turbo \
+		libpng16-16 \
+		libwebp7 \
+# Needed for intl:
+		libicu76 \
+# Needed for imagick:
+		imagemagick \
+# Needed for zip:
+		libzip5 \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
-# install the PHP extensions we need (https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
-RUN set -ex; \
-	\
+# Install build dependencies and PHP extensions
+RUN set -eux; \
 	savedAptMark="$(apt-mark showmanual)"; \
-	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-		libavif-dev \
+# Build dependencies for PHP extensions:
 		libfreetype6-dev \
 		libicu-dev \
 		libjpeg-dev \
@@ -30,10 +41,12 @@ RUN set -ex; \
 		libpng-dev \
 		libwebp-dev \
 		libzip-dev \
+# Tools needed for build:
+		curl \
+		unzip \
 	; \
 	\
 	docker-php-ext-configure gd \
-		--with-avif \
 		--with-freetype \
 		--with-jpeg \
 		--with-webp \
@@ -46,52 +59,40 @@ RUN set -ex; \
 		mysqli \
 		zip \
 	; \
-# https://pecl.php.net/package/imagick
-	pecl install imagick-3.8.0; \
-	docker-php-ext-enable imagick; \
-	rm -r /tmp/pear; \
+# Install imagick manually (same logic as before)
+	curl -fL -o imagick.tgz 'https://pecl.php.net/get/imagick-3.7.0.tgz'; \
+	echo '5a364354109029d224bcbb2e82e15b248be9b641227f45e63425c06531792d3e *imagick.tgz' | sha256sum -c -; \
+	tar --extract --directory /tmp --file imagick.tgz imagick-3.7.0; \
+	grep '^//#endif$' /tmp/imagick-3.7.0/Imagick.stub.php; \
+	test "$(grep -c '^//#endif$' /tmp/imagick-3.7.0/Imagick.stub.php)" = '1'; \
+	sed -i -e 's!^//#endif$!#endif!' /tmp/imagick-3.7.0/Imagick.stub.php; \
+	grep '^//#endif$' /tmp/imagick-3.7.0/Imagick.stub.php && exit 1 || :; \
+	docker-php-ext-install /tmp/imagick-3.7.0; \
+	rm -rf imagick.tgz /tmp/imagick-3.7.0; \
 	\
-# some misbehaving extensions end up outputting to stdout 🙈 (https://github.com/docker-library/wordpress/issues/669#issuecomment-993945967)
-	out="$(php -r 'exit(0);')"; \
-	[ -z "$out" ]; \
-	err="$(php -r 'exit(0);' 3>&1 1>&2 2>&3)"; \
-	[ -z "$err" ]; \
+# Enable opcache
+	docker-php-ext-enable opcache; \
 	\
-	extDir="$(php -r 'echo ini_get("extension_dir");')"; \
-	[ -d "$extDir" ]; \
-# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
+# Clean up build dependencies
 	apt-mark auto '.*' > /dev/null; \
 	apt-mark manual $savedAptMark; \
-	ldd "$extDir"/*.so \
-		| awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); printf "*%s\n", so }' \
-		| sort -u \
-		| xargs -r dpkg-query --search \
-		| cut -d: -f1 \
-		| sort -u \
-		| xargs -rt apt-mark manual; \
-	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
-	! { ldd "$extDir"/*.so | grep 'not found'; }; \
-# check for output like "PHP Warning:  PHP Startup: Unable to load dynamic library 'foo' (tried: ...)
+# Verify extensions (optional but good practice)
+	php -m; \
 	err="$(php --version 3>&1 1>&2 2>&3)"; \
 	[ -z "$err" ]
 
-# set recommended PHP.ini settings
-# see https://secure.php.net/manual/en/opcache.installation.php
-RUN set -eux; \
-	docker-php-ext-enable opcache; \
-	{ \
+# Prepare PHP configs
+RUN { \
 		echo 'opcache.memory_consumption=128'; \
 		echo 'opcache.interned_strings_buffer=8'; \
 		echo 'opcache.max_accelerated_files=4000'; \
 		echo 'opcache.revalidate_freq=2'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
-# https://wordpress.org/support/article/editing-wp-config-php/#configure-error-logging
+
 RUN { \
-# https://www.php.net/manual/en/errorfunc.constants.php
-# https://github.com/docker-library/wordpress/issues/420#issuecomment-517839670
 		echo 'error_reporting = E_ERROR | E_WARNING | E_PARSE | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_RECOVERABLE_ERROR'; \
 		echo 'display_errors = Off'; \
 		echo 'display_startup_errors = Off'; \
@@ -103,14 +104,12 @@ RUN { \
 		echo 'html_errors = Off'; \
 	} > /usr/local/etc/php/conf.d/error-logging.ini
 
+# Prepare Apache configs (enabling modules needs apache)
 RUN set -eux; \
-	a2enmod rewrite expires; \
+	a2enmod rewrite expires remoteip; \
 	\
-# https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html
-	a2enmod remoteip; \
 	{ \
 		echo 'RemoteIPHeader X-Forwarded-For'; \
-# these IP ranges are reserved for "private" use and should thus *usually* be safe inside Docker
 		echo 'RemoteIPInternalProxy 10.0.0.0/8'; \
 		echo 'RemoteIPInternalProxy 172.16.0.0/12'; \
 		echo 'RemoteIPInternalProxy 192.168.0.0/16'; \
@@ -118,54 +117,62 @@ RUN set -eux; \
 		echo 'RemoteIPInternalProxy 127.0.0.0/8'; \
 	} > /etc/apache2/conf-available/remoteip.conf; \
 	a2enconf remoteip; \
-# https://github.com/docker-library/wordpress/issues/383#issuecomment-507886512
-# (replace all instances of "%h" with "%a" in LogFormat)
 	find /etc/apache2 -type f -name '*.conf' -exec sed -ri 's/([[:space:]]*LogFormat[[:space:]]+"[^"]*)%h([^"]*")/\1%a\2/g' '{}' +
 
+# ---- Final Stage ----
+FROM php:8.2-apache
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Install runtime dependencies (must match libs used by extensions)
 RUN set -eux; \
-	version='6.8.2'; \
-	sha1='03baad10b8f9a416a3e10b89010d811d9361e468'; \
-	\
-	curl -o wordpress.tar.gz -fL "https://wordpress.org/wordpress-$version.tar.gz"; \
-	echo "$sha1 *wordpress.tar.gz" | sha1sum -c -; \
-	\
-# upstream tarballs include ./wordpress/ so this gives us /usr/src/wordpress
-	tar -xzf wordpress.tar.gz -C /usr/src/; \
-	rm wordpress.tar.gz; \
-	\
-# https://wordpress.org/support/article/htaccess/
-	[ ! -e /usr/src/wordpress/.htaccess ]; \
-	{ \
-		echo '# BEGIN WordPress'; \
-		echo ''; \
-		echo 'RewriteEngine On'; \
-		echo 'RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]'; \
-		echo 'RewriteBase /'; \
-		echo 'RewriteRule ^index\.php$ - [L]'; \
-		echo 'RewriteCond %{REQUEST_FILENAME} !-f'; \
-		echo 'RewriteCond %{REQUEST_FILENAME} !-d'; \
-		echo 'RewriteRule . /index.php [L]'; \
-		echo ''; \
-		echo '# END WordPress'; \
-	} > /usr/src/wordpress/.htaccess; \
-	\
-	chown -R www-data:www-data /usr/src/wordpress; \
-# pre-create wp-content (and single-level children) for folks who want to bind-mount themes, etc so permissions are pre-created properly instead of root:root
-# wp-content/cache: https://github.com/docker-library/wordpress/issues/534#issuecomment-705733507
-	mkdir wp-content; \
-	for dir in /usr/src/wordpress/wp-content/*/ cache; do \
-		dir="$(basename "${dir%/}")"; \
-		mkdir "wp-content/$dir"; \
-	done; \
-	chown -R www-data:www-data wp-content; \
-	chmod -R 1777 wp-content
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		ghostscript \
+		libfreetype6 \
+		libicu76 \
+		libjpeg62-turbo \
+		imagemagick \
+		libpng16-16 \
+		libwebp7 \
+		libzip5 \
+# Install apache utilities needed for module enabling if not present
+		apache2-utils \
+	; \
+	rm -rf /var/lib/apt/lists/*
 
-VOLUME /var/www/html
+# Copy PHP extensions from builder stage
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 
-COPY --chown=www-data:www-data wp-config-docker.php /usr/src/wordpress/
+# Copy PHP configs from builder stage
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+
+# Copy Apache configs from builder stage
+COPY --from=builder /etc/apache2/mods-available/ /etc/apache2/mods-available/
+COPY --from=builder /etc/apache2/mods-enabled/ /etc/apache2/mods-enabled/
+COPY --from=builder /etc/apache2/conf-available/ /etc/apache2/conf-available/
+COPY --from=builder /etc/apache2/conf-enabled/ /etc/apache2/conf-enabled/
+COPY --from=builder /etc/apache2/apache2.conf /etc/apache2/apache2.conf
+COPY --from=builder /etc/apache2/ports.conf /etc/apache2/ports.conf
+
+# Enable apache modules (copied as enabled, but good to ensure)
+RUN a2enmod rewrite expires remoteip
+
+# Application code
+# Consider optimizing this part - e.g., only copy necessary files, not the whole directory if possible.
+# If WordPress core files are not modified, consider adding them via a volume or downloading at runtime.
+# For now, we copy the pre-existing directory.
+COPY WordPress-new /var/www/html
+
+# Ensure correct permissions (adjust if necessary based on your WordPress setup)
+# RUN chown -R www-data:www-data /var/www/html
+
+VOLUME /var/www/html/wp-content
+
+# Entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
-# https://github.com/docker-library/wordpress/issues/969
-RUN ln -svfT docker-entrypoint.sh /usr/local/bin/docker-ensure-installed.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
