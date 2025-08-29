@@ -22,8 +22,8 @@ RUN set -eux; \
 # Needed for intl:
 		libicu76 \
 # Needed for imagick:
-		libmagickcore-6.q16-7 \
-		libmagickwand-6.q16-7 \
+		libmagickcore-6.q16-6 \
+		libmagickwand-6.q16-6 \
 # Needed for zip:
 		libzip5 \
 	; \
@@ -134,8 +134,8 @@ RUN set -eux; \
 		libfreetype6 \
 		libicu76 \
 		libjpeg62-turbo \
-		libmagickcore-6.q16-7 \
-		libmagickwand-6.q16-7 \
+		libmagickcore-6.q16-6 \
+		libmagickwand-6.q16-6 \
 		libpng16-16 \
 		libwebp7 \
 		libzip5 \
