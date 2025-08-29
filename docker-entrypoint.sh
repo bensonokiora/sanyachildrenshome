@@ -32,12 +32,13 @@ if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
     fi
 
 
-    # Set ownership of /var/www/html to www-data
-    chown -R www-data:www-data /var/www/html
-
-    # Set the correct permissions for the uploads directory
-    # chmod -R 775 /var/www/html/wp-content/uploads
-    chmod -R 777 /var/www/html/wp-content/
+    # Set ownership of /var/www/html to www-data (only if running as root)
+    if [ "$uid" = '0' ]; then
+        chown -R www-data:www-data /var/www/html
+        # Set the correct permissions for the uploads directory
+        # chmod -R 775 /var/www/html/wp-content/uploads
+        chmod -R 777 /var/www/html/wp-content/
+    fi
 
 fi
 
