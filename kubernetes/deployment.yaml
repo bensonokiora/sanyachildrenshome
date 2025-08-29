@@ -14,10 +14,35 @@ spec:
       labels:
         app: sanyachildrenshome
     spec:
+      securityContext:
+        fsGroup: 33  # www-data group ID
+        fsGroupChangePolicy: "Always"
+      initContainers:
+        - name: fix-permissions
+          image: busybox:1.35
+          command: ['sh', '-c']
+          args:
+            - |
+              echo "Setting up WordPress file permissions..."
+              chown -R 33:33 /var/www/html/wp-content
+              find /var/www/html/wp-content -type d -exec chmod 755 {} \;
+              find /var/www/html/wp-content -type f -exec chmod 644 {} \;
+              chmod 755 /var/www/html/wp-content/uploads
+              echo "Permissions set successfully"
+          volumeMounts:
+          - name: sanyachildrenshome-volume
+            mountPath: "/var/www/html/wp-content"
+          securityContext:
+            runAsUser: 0  # Run as root to change ownership
       containers:
         - name: sanyachildrenshome
           image: registry.gitlab.com/__DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
           imagePullPolicy: Always
+          securityContext:
+            runAsUser: 33  # www-data user ID
+            runAsGroup: 33  # www-data group ID
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
           resources:
             requests:
               cpu: "20m"        # Baseline CPU request
