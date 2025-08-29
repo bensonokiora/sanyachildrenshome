@@ -1,0 +1,111 @@
+:root {
+  --givewp-shadow-xs: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/****/
+:root {
+  --donatm-font-sans-serif: "Plus Jakarta Sans", sans-serif;
+  --e-global-color-primary: #02A95C;
+  --e-global-color-secondary: #FC791A;
+  --e-global-color-text: #676666;
+  --donatm-color-three:  #C2DF93;
+  --donatm-color-support-1: #26DA90;
+  --donatm-color-support-2: #E9C138;
+  --donatm-color-support-3: #E36955;
+  --donatm-link-color:      #122F2A;
+  --donatm-hover-color:     #FC791A;
+  --donatm-body-color:      #676666;
+  --donatm-heading-color:   #122F2A;
+  --donatm-heading-font-family: "Quicksand", sans-serif;
+  --donatm-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --donatm-footer-bg-color:           #122F2A;
+  --donatm-footer-color:              #D9D9D9;
+  --donatm-footer-color-link:         #D9D9D9;
+  --donatm-footer-color-link-hover:   #F35D22;
+  --tec-font-family-sans-serif: var(--donatm-heading-font-family);
+  --tec-color-accent-primary: var(--e-global-color-primary);
+  --tec-font-size-4: 16px;
+  --tec-line-height-2: 28px;
+  --tec-spacer-14: 60px;
+  --tec-spacer-13: 60px;
+  --givewp-shadow-xs: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --givewp-neutral-50: #E5E5E5;
+}
+
+.givewp-donation-form, body {
+  font-family: var(--donatm-font-sans-serif);
+}
+
+.givewp-donation-form-modal__open {
+  background: var(--e-global-color-primary);
+  color: #fff;
+  padding: 4px 25px 4px 4px !important;
+  line-height: 38px;
+  font-size: 16px;
+  border-radius: 50px;
+  z-index: 9;
+  display: inline-block;
+  white-space: nowrap;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  font-family: var(--donatm-font-sans-serif);
+  font-weight: 600 !important;
+}
+
+.givewp-donation-form-modal__open:before {
+  content: "\f148";
+  font-family: "dicomoon";
+  width: 38px;
+  height: 38px;
+  background: #fff;
+  color: var(--e-global-color-primary);
+  margin-right: 10px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.35s;
+  font-size: 20px;
+  font-weight: 400 !important;
+}
+
+.givewp-donation-form-modal__open:hover, .givewp-donation-form-modal__open:focus {
+  color: #fff;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.givewp-donation-form-modal__open:active {
+  top: 2px;
+}
+
+.givewp-donation-form__steps {
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+.givewp-layouts-header {
+  border: none !important;
+}
+
+.givewp-layouts-header__templates-ms--background .givewp-layouts-header__content {
+  padding: 65px 60px 40px !important;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+  .givewp-layouts-header__templates-ms--background .givewp-layouts-header__content {
+    padding: 65px 15px 40px !important;
+  }
+}
+
+.givewp-layouts-header__templates-ms--background .givewp-layouts-header__content .givewp-layouts-headerDescription {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 400;
+}
+
+.givewp-campaign-donations-block .givewp-campaign-donations-block__donation, .givewp-campaign-donations-block .givewp-campaign-donations-block__empty-state {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

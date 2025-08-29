@@ -1,0 +1,21 @@
+.donatm-icon-theme{
+   width: 28px;
+   height: 24px;
+   position: relative;
+   background: url("images/icon-theme.png");
+   background-size: contain;
+   background-repeat: no-repeat;
+   display: inline-block;
+} 
+
+.elementor-element-wrapper.elementor-element--promotion{
+   display: none;
+}
+
+.elementor-control-unit-2[type="number"]{
+  min-width: 120px;
+}
+
+body.elementor-editor-active .givewp-campaign-donate-button-block iframe{
+   display: none!important;
+}

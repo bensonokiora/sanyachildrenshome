@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sanyachildrenshome
+  labels:
+    app: sanyachildrenshome
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sanyachildrenshome
+  template:
+    metadata:
+      labels:
+        app: sanyachildrenshome
+    spec:
+      containers:
+        - name: sanyachildrenshome
+          image: registry.gitlab.com/__DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "20m"        # Baseline CPU request
+              memory: "200Mi"    # Baseline memory request
+            limits:
+              cpu: "100m"        # Max CPU limit (4x request)
+              memory: "300Mi"    # Max memory limit (2x request)
+          volumeMounts:
+          - name: sanyachildrenshome-volume
+            mountPath: "/var/www/html/wp-content"      
+      volumes:
+        - name: sanyachildrenshome-volume
+          persistentVolumeClaim:
+            claimName: sanyachildrenshome-pvc
+      imagePullSecrets:
+        - name: regcred

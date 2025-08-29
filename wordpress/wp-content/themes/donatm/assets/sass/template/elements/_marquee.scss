@@ -1,0 +1,91 @@
+.gsc-marquee{
+   position: relative;
+   .marquee-text{
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 1;
+      display: flex;
+      align-items: center; 
+      white-space: nowrap;
+      font-family: $headings-font-family;
+      @media(max-width: 1200px){
+         font-size: 65px;
+      }
+      @media (max-width: 1024px){
+         font-size: 55px;
+      }
+      @media (max-width: 992px){
+         font-size: 50px;
+      }
+      @media (max-width: 768px){
+         font-size: 42px;
+      }
+      .js-marquee-wrapper{
+         display: flex;
+      }
+      .js-marquee > .marquee-item{
+         &:nth-child(odd){
+            color: $theme-color-2;
+            -webkit-text-fill-color: white; 
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: $theme-color-2;
+         }
+         &:nth-child(even){
+            color: $headings-color;
+         }
+      }
+      .marquee-item{
+         position: relative;
+         transition: all 0.35s;
+         .marquee-title{
+            position: relative;
+         }
+         .marquee-dot{
+            width: 24px;
+            height: 24px;
+            mask-image: url('#{$image-theme-path-base}marquee-dot.png');
+            background: $theme-color-2;
+            display: inline-block;
+            transform: translateY(-50%);
+            margin: 0 12px;
+         }
+         .marquee-image{
+            opacity: 0;
+            transition: all 0.6s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 138px;
+            height: 138px;
+            margin-left: -69px;
+            margin-top: -69px;
+            transform: scale(0.6);
+            border-radius: 50%;
+            visibility: hidden;
+            z-index: 11;
+            overflow: hidden;
+            img{
+               position: absolute;
+               height: 100%;
+               width: 100%;
+               object-fit: cover;
+               transform: translate(-50%, -50%);
+               top: 50%;
+               left: 50%;
+               transition: all 2s;
+            }
+         }
+         &:hover{
+            color: $theme-color;
+            .marquee-image{
+               opacity: 1;
+               visibility: visible;
+               transform: scale(1);
+               img{
+                  transform: translate(-50%, -50%) scale(1.15);
+               }
+            }
+         }
+      }
+   }
+} 

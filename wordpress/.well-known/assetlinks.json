@@ -1,0 +1,14 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.wahi.mpesa",
+        "sha256_cert_fingerprints": [
+          "19:10:C8:DE:9B:65:A9:70:FB:27:AE:A0:E2:F8:E8:73:BB:B8:20:C9:EA:92:90:B8:4F:51:07:1E:C2:55:90:65"
+        ]
+      }
+    }
+  ]

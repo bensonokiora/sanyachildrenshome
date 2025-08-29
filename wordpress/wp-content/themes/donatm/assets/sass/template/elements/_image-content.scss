@@ -1,0 +1,519 @@
+.about-one{
+  	&__single{
+	 	position: relative;
+	 	text-align: center;
+	 }
+ 	&__image{
+ 		display: inline-block;
+ 		position: relative;
+ 		margin-top: 15px;
+ 		&:before{
+ 			content: "";
+ 			position: absolute;
+ 			top: 0px;
+ 			left: 0px;
+ 			width: 100%;
+ 			height: 100%;
+ 			background: $theme-color-2;
+ 			border-radius: 20px;
+ 			transform: rotate(-8deg);
+ 		}
+ 		img{
+    		transition: all 5s;
+    		border-radius: 20px;
+    		transform: rotate(-4deg);
+ 		}
+ 	}
+ 	&__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+	&__single:hover{
+		.about-one__image{
+			img{
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+.about-two{
+  	&__single{
+	 	position: relative;
+	 	text-align: center;
+	 }
+ 	&__image{
+ 		display: inline-block;
+ 		position: relative;
+ 		margin-top: 15px;
+ 		&:before{
+ 			content: "";
+ 			position: absolute;
+ 			top: 0px;
+ 			left: -15px;
+ 			width: 100%;
+ 			height: 100%;
+ 			border: 1px dashed $theme-color-2;
+ 			border-radius: 1000px 0px 0px 1000px;
+ 			z-index: 1;
+ 		}
+ 		img{
+    		transition: all 5s;
+    		border-radius: 1000px 30px 30px 1000px;
+    		position: relative;
+    		z-index: 2;
+ 		}
+ 	}
+ 	&__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+	&__single:hover{
+		.about-two__image{
+			img{
+				
+			}
+		}
+	}
+}
+.about-three{
+	&__single{
+	 	position: relative;
+	} 
+	&__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+	&__logo{
+		position: absolute;
+		top: 40px;
+		left: 257px;
+		z-index: 3;
+		img{
+			//animation: spinAround 3s ease 0s infinite; 
+			animation: rotation 5s linear infinite;
+		}
+	}
+	&__image{
+		position: relative;
+		z-index: 1;
+		.content-inner{
+			overflow: hidden;
+		  	display: inline-block;
+		  	width: 300px; /* Điều chỉnh kích thước ảnh theo nhu cầu */
+         height: 300px;
+			img{
+		  		transition: all 5s;
+		  		//mix-blend-mode: luminosity;
+				//transform: matrix(-0.36, 0.93, 0.93, 0.36, 0, 0);
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				clip-path: path("M0,100 A200,200 0 0,1 200,200 L100,300 A200,200 0 0,1 0,100 Z");
+			}
+		}
+	}
+	&__image-second{
+		position: absolute;
+		left: 0;
+		top: 234px;
+		z-index: 2;
+		.content-inner{
+			overflow: hidden;
+		  	display: inline-block;
+			img{
+		  		animation: scaleOut 2s ease-in-out infinite;
+				transform: rotate(138.85deg);
+			}
+		}
+	}
+}
+
+.about-four{
+   &__single{
+      position: relative;
+      max-width: 650px;
+      margin: 0 auto;
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__wrap{
+   	padding-left: 30px;
+   	padding-right: 60px;
+   }
+   &__image{
+      position: relative;
+      overflow: hidden;
+      img{
+         @include transition(all 3s);
+         border-radius: 16px;
+      }
+   }
+   &__image-second{
+      overflow: hidden;
+      max-width: 270px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      @media(max-width: 1024px){
+         max-width: 220px;
+      }
+      @media(max-width: 992px){
+         max-width: 180px;
+      }
+      @media(max-width: 480px){
+         max-width: 145px;
+      }
+      img{
+         @include transition(all 3s);
+         border: 8px solid $white;
+         border-radius: 16px;
+      }
+   }  
+   &__content{
+      z-index: 1;
+      @include transition(all 0.35s); 
+      text-align: center;
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      z-index: 2;
+   }
+   &__title{
+   	position: absolute;
+   	z-index: 3;
+   	left: 0;
+   	top: 50%;
+      margin: 0;
+		clip-path: polygon(50% 20px, 100% 0, 100% 100%, 0 100%, 0 0);
+      padding: 60px 18px 30px;
+		background: $theme-color-2;
+		display: inline-block;
+		color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: $headings-font-family;
+      color: $white;
+      white-space: nowrap;
+      -webkit-transform: translateY(-50%) rotate(180deg);
+		transform: translateY(-50%) rotate(180deg);
+		-webkit-writing-mode: vertical-rl;
+		-ms-writing-mode: tb-rl;
+		writing-mode: vertical-rl;
+   }
+   &__video{
+   	position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+      .video-link{
+      	width: 54px;
+      	height: 54px;
+      	border-radius: 50%;
+      	background: $white;
+      	display: flex;
+      	align-items: center;
+      	justify-content: center;
+      	color: $theme-color;
+      	font-size: 14px;
+      	position: relative;
+      	&::before{
+			  	position: absolute;
+			  	content: '';
+			  	left: 0;
+			  	top: 0;
+			  	height: 100%;
+			  	width: 100%;
+			  	border: 1px solid $white;
+			  	opacity: 0;
+				border-radius: 50%;
+			  	@include animation(pulse-border-2 1.5s linear infinite);
+			}
+			&::after{
+			  	position: absolute;
+			  	content: '';
+			  	left: 0;
+			  	top: 0;
+			  	height: 100%;
+			  	width: 100%;
+			  	border: 1px solid $white;
+			  	opacity: 0;
+			  	border-radius: 50%;
+			  	@include animation(pulse-border 1s linear infinite);
+			}
+      }
+   }
+}
+.about-five{
+   &__single{
+      position: relative;
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__wrap{
+   	position: relative;
+   	max-width: 580px;
+   	margin: 0 auto;
+   	padding-left: 75px;
+   }
+   &__image{
+      position: relative;
+      overflow: hidden;
+      .content-inner{
+      	width: 100%;
+	      mask-image: url('#{$image-theme-path-base}polygon-img-1.png');
+	      mask-repeat: no-repeat;
+	      mask-size: 100%;
+	      //transform: matrix(-1, 0, 0, 1, 0, 0);
+      }
+      img{
+         @include transition(all 3s);
+         width: 100%;
+			height: 100%;
+			object-fit: cover;
+      }
+   }
+
+
+   &__image-second{
+      overflow: hidden;
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      .content-inner{
+      	width: 235px;
+      	height: 217px;
+      	-webkit-mask-image: url('#{$image-theme-path-base}polygon-img-2.png');
+	    mask-image: url('#{$image-theme-path-base}polygon-img-2.png');
+	    -webkit-mask-repeat: no-repeat;
+	    mask-repeat: no-repeat;
+	    -webkit-mask-size: 100%;
+	    mask-size: 100%;
+	    transform: matrix(-1, 0, 0, 1, 0, 0);
+      }
+      img{
+         @include transition(all 3s);
+            width: 100%;
+				height: 100%;
+				object-fit: cover;
+      }
+   }
+}
+.about-six{
+   &__single{
+      position: relative;
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__wrap{
+   	position: relative;
+   	max-width: 539px;
+   	margin: 0 auto;
+   	padding-right: 50px;
+   }	
+   &__image{
+      position: relative;
+      overflow: hidden;
+      padding-left: 50px;
+      &:before{
+      	content: "";
+      	position: absolute;
+      	left: 0;
+      	bottom: 20px;
+      	width: 19px;
+      	height: 30%;
+      	border-radius: 8px;
+      	background: #63AB45;
+      }
+      .content-inner{
+      }
+      img{
+         @include transition(all 3s);
+         border-radius: 20px;
+      }
+   }
+
+
+   &__image-second{
+      overflow: hidden;
+      position: absolute;
+      z-index: 2;
+      bottom: 40px;
+      right: 0;
+      .content-inner{
+      }
+      img{
+         @include transition(all 3s);
+         border-radius: 8px;
+         border: 8px solid $white;
+      }
+   }
+}
+.about-seven{
+   &__single{
+      position: relative;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+   &__image{
+      display: inline-block;
+      position: relative;
+      &:before{
+         content: "";
+         position: absolute;
+         top: 40px;
+         left: 40px;
+         width: 100%;
+         height: 100%;
+         border: 3px solid $theme-color-2;
+         border-radius: 0 0 500px 500px;
+         z-index: 2;
+      }
+      img{
+         transition: all 5s;
+         border-radius: 0 120px 500px 500px;
+      }
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__single:hover{
+      .about-seven__image{
+         img{
+            
+         }
+      }
+   }
+}
+.about-eight{
+   &__single{
+      position: relative;
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__wrap{
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-right: 100px;
+   }  
+   &__image{
+      position: relative;
+      &:before{
+         content: "";
+         position: absolute;
+         top: 40px;
+         right: -50px;
+         width: 119px;
+         height: 50%;
+         display: block;
+         border-radius: 50px;
+         border: 1px dashed $theme-color-2;
+         z-index: 1;
+      }
+      .content-inner{
+      }
+      img{
+         @include transition(all 3s);
+         border-radius: 30px;
+         position: relative;
+         z-index: 2;
+      }
+   }
+   &__image-second{
+      overflow: hidden;
+      position: absolute;
+      z-index: 3;
+      bottom: 30px;
+      right: 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      .content-inner{
+      }
+      img{
+         @include transition(all 3s);
+         border-radius: 20px;
+         border: 10px solid $white;
+      }
+   }
+}
+.about-nine{
+   &__single{
+      position: relative;
+    }
+   &__image{
+      display: inline-block;
+      position: relative;
+      margin-top: 70px;
+      margin-right: 70px;
+      &:before{
+         content: "";
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         clip-path: polygon(80% 0%, 100% 20%, 100% 100%, 0 100%, 0 0);
+         background: $white;
+         width: calc(100% + 70px);
+         height: calc(100% + 70px);
+      }
+      img{
+         transition: all 5s;
+         clip-path: polygon(80% 0%, 100% 20%, 100% 100%, 0 100%, 0 0);
+      }
+   }
+   &__link-overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+   }
+   &__single:hover{
+      .about-one__image{
+         img{
+            
+         }
+      }
+   }
+}

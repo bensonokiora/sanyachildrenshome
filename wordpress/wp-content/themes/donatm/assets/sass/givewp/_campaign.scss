@@ -1,0 +1,1166 @@
+.givewp-donation-form-modal__open{
+   width: auto;
+}
+// Campaign One
+.campaign-one{
+   margin-bottom: 30px; 
+   background: $white; 
+   position: relative; 
+   border-radius: 10px;
+   transition: all 0.38s;
+   &__image{
+      position: relative;
+      z-index: 2;
+      img{
+         border-radius: 10px 10px 0 0;
+      }
+   }
+   &__overlay{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 8;
+      background: $black;
+      opacity: 0;
+      transition: all 0.6s;
+      border-radius: 10px 10px 0 0;
+   }
+   &__progress{
+      position: relative;
+      z-index: 9;
+      margin-top: 4px;
+      .progress{
+         height: 10px;
+         background: $bg-gray;
+         overflow: visible;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            border-radius: 10px;
+            transition: background 0.36s, width 0s;
+            &:after{
+               content: '';
+               width: 12px;
+               height: 12px;
+               border-radius: 50%;
+               background: $white;
+               border: 2px solid $theme-color;
+               position: absolute;
+               right: -6px;
+               top: -1px;
+               z-index: 3;
+               transition: all 0.36s;
+            }
+         }
+      }
+   }
+   &__information{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 4px;
+   }
+   &__raised{
+      font-size: 14px;
+      font-weight: 600;
+      color: $body-color;
+   }
+   &__percent_raised{
+      color: $headings-color;
+      font-size: 14px;
+      font-weight: 600;
+   }
+   &__goal{
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 5px;
+   }
+   &__goal-label{
+      color: $body-color;
+   }
+   &__goal-value{
+      color: $theme-color;
+      transition: all 0.35s;
+   }
+   &__content{
+      position: relative;
+      z-index: 2;
+      padding: 25px 25px 30px;
+      border-radius: 0 0 10px 10px;
+      border: 1px solid $border-color;
+      border-top: 0;
+      @media(max-width: 1200px){
+         padding: 25px 18px 30px;
+      }
+   }
+   &__title{
+      font-size: 22px;
+      margin: 0 0 10px;
+      line-height: 30px; 
+      @include media-breakpoint-down(lg){
+         font-size: 20px;
+      }
+   }
+   &__bottom{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 4px;
+      background: $bg-gray;
+      border-radius: 8px;
+      padding: 15px 15px;
+      margin-top: 20px;
+   }
+   &__donations{
+      font-size: 15px;
+      font-weight: 600;
+      i{
+         color: $theme-color-2;
+         margin-right: 2px;
+      }
+   }
+   &__button{
+         .givewp-donation-form-modal__open{
+         background: none;
+         padding: 0!important;
+         line-height: 1;
+         color: $theme-color!important;
+         font-size: 15px;
+         &:before{
+            display: none;
+         }
+         &:after{
+            content: '\f11f';
+            font-family: 'dicomoon';
+            margin-left: 5px;
+            font-size: 10px;
+         }
+      }
+   }
+   &:hover{
+      box-shadow: 0px 15px 28px 0px rgba(27, 31, 46, 0.1);
+      .campaign-one{
+         &__overlay{
+            opacity: 0.5;
+         }
+         &__progress{
+            .progress{
+               .progress-bar{
+                  background: $theme-color-2;
+                  &:after{
+                     border-color: $theme-color-2;
+                  }
+               }
+               .percentage{
+                  background: $theme-color-2;
+                  &:after{
+                     border-top-color: $theme-color-2;
+                  }
+               }
+            }
+         }
+         &__goal-value{
+            color: $theme-color-2;
+         }
+         &__button{
+            .givewp-donation-form-modal__open{
+               color: $theme-color-2!important;
+            }
+         }
+      }
+   }
+}
+
+.item-active.center{
+   .campaign-one{
+      &__progress{
+         .progress{
+            .progress-bar{
+               background: $theme-color-2;
+               &:after{
+                  border-color: $theme-color-2;
+               }
+            }
+            .percentage{
+               background: $theme-color-2;
+               &:after{
+                  border-top-color: $theme-color-2;
+               }
+            }
+         }
+      }
+      &__goal-value{
+         color: $theme-color-2;
+      }
+      &__button{
+         .givewp-donation-form-modal__open{
+            color: $theme-color-2!important;
+         }
+      }
+   }
+}
+
+// Campaign Two
+.campaign-two{
+   margin-bottom: 30px; 
+   position: relative;
+   transition: all 0.5s;
+   &__wrap{
+      border-radius: 20px;
+      padding: 18px 18px 30px;
+      border: 1px solid $border-color;
+      background: $white; 
+   }
+   &__image{
+      position: relative;
+      z-index: 2;
+      img{
+         border-radius: 16px;
+      }
+   }
+   &__content{
+      position: relative;
+      z-index: 2;
+      padding: 50px 0 0;
+   }
+   &__title{
+      font-size: 24px;
+      margin: 15px 0 22px;
+      line-height: 32px; 
+      @media(max-width: 1200px){
+         font-size: 20px;
+         line-height: 28px;
+      }
+   }
+   &__progress{
+      margin-top: 4px;
+      .progress{
+         height: 8px;
+         border: 1px solid $theme-color;
+         background: $white;
+         overflow: visible;
+         transition: all 0.5s;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            transition: background 0.36s, width 0s;
+            &:after{
+               content: '';
+               width: 12px;
+               height: 12px;
+               border-radius: 50%;
+               background: $white;
+               border: 2px solid $theme-color;
+               position: absolute;
+               right: -6px;
+               top: -3px;
+               z-index: 3;
+               transition: all 0.5s;
+            }
+         }
+         .percentage{
+            position: absolute;
+            bottom: 100%;
+            left: 100%;
+            z-index: 1;
+            padding: 4px 8px 5px;
+            background: $theme-color;
+            font-size: 11px;
+            color: $white;
+            margin-bottom: 11px;
+            line-height: 1;
+            font-weight: 600;
+            border-radius: 5px 5px 5px 0;
+            transition: all 0.5s; 
+            &:after{
+               content: "";
+               border: 6px solid transparent;
+               border-top-color: $theme-color;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               z-index: 1;
+               transform: rotate(-90deg);
+               margin-top: -6px;
+               transition: all 0.5s;
+            }
+            &.percentage-left{
+               left: auto;
+               right: 0;
+               &:after{
+                  right: 0;
+                  left: auto;
+                  transform: rotate(90deg);
+                  margin-right: 2px;
+               }
+            }
+         }
+      }
+   }
+   &__information{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 4px;
+   }
+   &__raised{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__percent-raised{
+      color: $theme-color-2;
+   }
+   &__goal{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__btn-donate{
+      .givewp-donation-form-modal__open{
+
+      }
+   }
+   &:hover{
+      box-shadow: 0px 15px 28px 0px rgba(27, 31, 46, 0.06);
+      .campaign-two{
+         &__progress{
+            .progress{
+               border-color: $theme-color-2;
+               .progress-bar{
+                  background: $theme-color-2;
+                  &:after{
+                     border-color: $theme-color-2;
+                  }
+               }
+               .percentage{
+                  background: $theme-color-2;
+                  &:after{
+                     border-top-color: $theme-color-2;
+                  }
+               }
+            }
+         }
+         &__btn-donate{
+            .givewp-donation-form-modal__open{
+               background: $theme-color-2;
+               &:before{
+                  color: $theme-color-2;
+               }
+            }
+         }
+      }
+   }
+}
+
+.item-active.center{
+   .campaign-two{
+      &__progress{
+         .progress{
+            border-color: $theme-color-2;
+            .progress-bar{
+               background: $theme-color-2;
+               &:after{
+                  border-color: $theme-color-2;
+               }
+            }
+            .percentage{
+               background: $theme-color-2;
+               &:after{
+                  border-top-color: $theme-color-2;
+               }
+            }
+         }
+      }
+      &__btn-donate{
+         .givewp-donation-form-modal__open{
+            background: $theme-color-2;
+            &:before{
+               color: $theme-color-2;
+            }
+         }
+      }
+   }
+}
+
+// Campaign Three
+.campaign-three{
+   margin-bottom: 30px; 
+   transition: all 0.35s;
+   width: 100%;
+   max-width: 670px;
+   &__wrap{
+      display: flex;
+      justify-content: center;
+      @media(max-width: 520px){
+         display: block;
+      }
+   }
+   &__image{
+      position: relative;
+      width: 38%;
+      flex: 0 0 38%;
+      border-radius: 20px 0 0 20px;
+      overflow: hidden;
+      @media(max-width: 520px){
+         width: 100%;
+         flex: 0 0 100%;
+         min-height: 320px;
+      }
+   }
+   &__image-content{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      img{
+         position: absolute;
+         height: 100%;
+         width: 100%;
+         object-fit: cover;
+         transform: translate(-50%,-50%);
+         top: 50%;
+         left: 50%;
+      }
+   }
+   &__overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      @include size(100%, 100%);
+      background: $black;
+      opacity: 0;
+      transition: all 0.35s;
+   }
+   &__content{
+      padding: 25px 25px 30px;
+      background: $white;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 0 20px 20px 0;
+      @media (max-width: 1024px){
+         padding: 20px 16px 25px;
+      }
+   }
+   &__title{
+      font-size: 24px;
+      margin: 0 0 12px;
+      line-height: 34px;
+      @include media-breakpoint-down(lg){
+         font-size: 20px;
+         line-height: 30px;
+      }
+   }
+   &__progress{
+      margin-top: 4px;
+      .progress{
+         height: 7px;
+         border: 1px solid $theme-color;
+         background: $white;
+         overflow: visible;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            transition: none!important;
+            &:after{
+               content: '';
+               width: 18px;
+               height: 18px;
+               border-radius: 50%;
+               background: $white;
+               border: 5px solid $theme-color;
+               position: absolute;
+               right: -15px;
+               top: -6px;
+               z-index: 3;
+            }
+         }
+      }
+   }
+   &__raised{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+   }
+   &__percent-raised{
+      color: $theme-color;
+   }
+   &__goal{
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__btn-donate{
+      margin-top: 15px;
+      .givewp-donation-form-modal__open{
+         padding: 0 18px 2px!important;
+         background: $theme-color-2;
+         &:before{
+            display: none;
+         }
+      }
+   }
+   &:hover, &:focus{
+      .campaign-three{
+         &__overlay{
+            opacity: 0.36;
+         }
+         &__btn-donate{
+            opacity: 1;
+         }
+      }
+   }
+}
+ 
+// Campaign Four
+.campaign-four{
+   margin-bottom: 30px; 
+   position: relative;
+   transition: all 0.5s;
+   &__wrap{
+      border-radius: 15px;
+   }
+   &__image{
+      position: relative;
+      z-index: 2;
+      img{
+         border-radius: 15px;
+      }
+   }
+   &__btn-donate{
+      display: inline-block;
+      background-color: $theme-color;
+      color: #fff;
+      padding: 0;
+      line-height: 18px;
+      font-size: 12px;
+      font-weight: 500;
+      position: absolute;
+      top: 20px;
+      left: -25px;
+      z-index: 11;
+      opacity: 0;
+      transition: all 0.5s;
+      &:after{
+         content: '';
+         position: absolute;
+         top: 100%;
+         left: 0;
+         content: "";
+         border-right: 0px solid transparent;
+         border-left: 5px solid transparent;
+         border-top: 5px solid $theme-color;
+      }
+      .givewp-donation-form-modal__open{
+         background-color: $theme-color;
+         line-height: 1;
+         padding: 8px 20px 10px!important;
+         border-radius: 0;
+         &:before{
+            display: none;
+         }
+      }
+   }
+   &__overlay{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, #010F1C 0%, rgba(27, 31, 46, 0) 100%);
+      transition: all 0.35s;
+      border-radius: 15px;
+   }
+   &__content{
+      padding: 20px 20px 15px;
+      position: absolute;
+      z-index: 2;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      transition: all 0.5s;
+      &:after{
+         content: '';
+         width: 100%;
+         height: 100%;
+         background: $white;
+         border-radius: 15px;
+         position: absolute;
+         left: 0;
+         bottom: -20px;
+         z-index: -1;
+         opacity: 0;
+         transition: all 0.5s;
+      }
+   }
+   &__title{
+      font-size: 22px;
+      margin: 0 0 38px;
+      line-height: 30px; 
+      position: relative;
+      z-index: 9;
+      a{
+         transition: all 0.5s;
+         color: $white;
+      }
+      @media(max-width: 1200px){
+         font-size: 20px;
+         line-height: 26px;
+      }
+   }
+   &__progress{
+      .progress{
+         height: 8px;
+         border: 1px solid $theme-color;
+         background: $white;
+         overflow: visible;
+         transition: all 0.5s;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            transition: background 0.36s, width 0s;
+            &:after{
+               content: '';
+               width: 12px;
+               height: 12px;
+               border-radius: 50%;
+               background: $white;
+               border: 2px solid $theme-color;
+               position: absolute;
+               right: -6px;
+               top: -3px;
+               z-index: 3;
+               transition: all 0.5s;
+            }
+         }
+         .percentage{
+            position: absolute;
+            bottom: 100%;
+            left: 100%;
+            z-index: 1;
+            padding: 4px 8px 5px;
+            background: $theme-color;
+            font-size: 11px;
+            color: $white;
+            margin-bottom: 11px;
+            line-height: 1;
+            font-weight: 600;
+            border-radius: 5px 5px 5px 0;
+            transition: all 0.5s; 
+            &:after{
+               content: "";
+               border: 6px solid transparent;
+               border-top-color: $theme-color;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               z-index: 1;
+               transform: rotate(-90deg);
+               margin-top: -6px;
+               transition: all 0.5s;
+            }
+            &.percentage-left{
+               left: auto;
+               right: 0;
+               &:after{
+                  right: 0;
+                  left: auto;
+                  transform: rotate(90deg);
+                  margin-right: 2px;
+               }
+            }
+         }
+      }
+   }
+   &__information{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 4px;
+   }
+   &__raised{
+      font-size: 12px;
+      font-weight: 600;
+      color: $white;
+      transition: all 0.5s;
+   }
+   &__goal{
+      font-size: 12px;
+      font-weight: 600;
+      color: $white;
+      transition: all 0.5s;
+   }
+   &:hover{
+      box-shadow: 0px 15px 28px 0px rgba(27, 31, 46, 0.06);
+      .campaign-four{
+         &__content{
+            &:after{
+               bottom: 0;
+               opacity: 1;
+            }
+         }
+         &__title{
+            a{
+               color: $headings-color;
+            }
+         }
+         &__progress{
+            .progress{
+               border-color: $theme-color-2;
+               .progress-bar{
+                  background: $theme-color-2;
+                  &:after{
+                     border-color: $theme-color-2;
+                  }
+               }
+               .percentage{
+                  background: $theme-color-2;
+                  &:after{
+                     border-top-color: $theme-color-2;
+                  }
+               }
+            }
+         }
+         &__raised{
+            font-size: 12px;
+            font-weight: 600;
+            color: $headings-color;
+         }
+         &__goal{
+            font-size: 12px;
+            font-weight: 600;
+            color: $headings-color;
+         }
+         &__btn-donate{
+            left: -5px;
+            opacity: 1;
+         }  
+      }
+   }
+}
+
+.item-active.center{
+   .campaign-four{
+      &__content{
+         &:after{
+            bottom: 0;
+            opacity: 1;
+         }
+      }
+      &__title{
+         a{
+            color: $headings-color;
+            &:hover{
+               color: $theme-color;
+            }
+         }
+      }
+      &__progress{
+         .progress{
+            border-color: $theme-color-2;
+            .progress-bar{
+               background: $theme-color-2;
+               &:after{
+                  border-color: $theme-color-2;
+               }
+            }
+            .percentage{
+               background: $theme-color-2;
+               &:after{
+                  border-top-color: $theme-color-2;
+               }
+            }
+         }
+      }
+      &__raised{
+         font-size: 12px;
+         font-weight: 600;
+         color: $headings-color;
+      }
+      &__goal{
+         font-size: 12px;
+         font-weight: 600;
+         color: $headings-color;
+      }
+      &__btn-donate{
+         left: -5px;
+         opacity: 1;
+      }  
+   }
+}
+
+// Campaign Five
+.campaign-five{
+   margin-bottom: 30px; 
+   position: relative;
+   transition: all 0.5s;
+   margin-top: 10px;
+   box-shadow: 0px 15px 28px 0px rgba(27, 31, 46, 0.06);
+   border-radius: 20px;
+   overflow: hidden;
+   &__wrap{
+      border-radius: 20px 20px 0 0;
+      padding: 22px 22px 0;
+      background: $white; 
+   }
+   &__image{
+      position: relative;
+      z-index: 2;
+      img{
+         border-radius: 16px;
+      }
+   }
+    &__btn-donate{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      opacity: 0;
+      transition: 0.5s;
+      .givewp-donation-form-modal__open{
+         padding: 2px 20px!important;
+         &:before{
+            display: none;
+         }
+      }
+   }
+   &__content{
+      position: relative;
+      z-index: 2;
+      padding: 22px 0 22px;
+   }
+   &__title{
+      font-size: 22px;
+      margin: 0;
+      line-height: 32px; 
+      @media(max-width: 1200px){
+         font-size: 20px;
+         line-height: 28px;
+      }
+   }
+   &__bottom{
+      position: relative;
+      border-radius: 0 0 20px 20px;
+      padding: 50px 22px 18px;
+      background: #F2F0EC;
+      &:before{
+         content: '';
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         left: 0;
+         top: 0;
+         background: url('#{$image-theme-path-base}bg-donate.png') repeat top left;
+         z-index: 1;
+      }
+   }
+   &__progress{
+      margin-top: 4px;
+      .progress{
+         height: 8px;
+         border: 1px solid $theme-color;
+         background: $white;
+         overflow: visible;
+         transition: all 0.5s;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            transition: background 0.36s, width 0s;
+            &:after{
+               content: '';
+               width: 12px;
+               height: 12px;
+               border-radius: 50%;
+               background: $white;
+               border: 2px solid $theme-color;
+               position: absolute;
+               right: -6px;
+               top: -3px;
+               z-index: 3;
+               transition: all 0.5s;
+            }
+         }
+         .percentage{
+            position: absolute;
+            bottom: 100%;
+            left: 100%;
+            z-index: 1;
+            padding: 4px 8px 5px;
+            background: $theme-color;
+            font-size: 11px;
+            color: $white;
+            margin-bottom: 11px;
+            line-height: 1;
+            font-weight: 600;
+            border-radius: 5px 5px 5px 0;
+            transition: all 0.5s; 
+            &:after{
+               content: "";
+               border: 6px solid transparent;
+               border-top-color: $theme-color;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               z-index: 1;
+               transform: rotate(-90deg);
+               margin-top: -6px;
+               transition: all 0.5s;
+            }
+            &.percentage-left{
+               left: auto;
+               right: 0;
+               &:after{
+                  right: 0;
+                  left: auto;
+                  transform: rotate(90deg);
+                  margin-right: 2px;
+               }
+            }
+         }
+      }
+   }
+   &__information{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 4px;
+   }
+   &__raised{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__percent-raised{
+      color: $theme-color-2;
+   }
+   &__goal{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+  
+   &:hover{
+      box-shadow: 0px 15px 28px 0px rgba(27, 31, 46, 0.06);
+      .campaign-five{
+         &__progress{
+            .progress{
+               border-color: $theme-color-2;
+               .progress-bar{
+                  background: $theme-color-2;
+                  &:after{
+                     border-color: $theme-color-2;
+                  }
+               }
+               .percentage{
+                  background: $theme-color-2;
+                  &:after{
+                     border-top-color: $theme-color-2;
+                  }
+               }
+            }
+         }
+         &__btn-donate{
+            opacity: 1;
+         }
+      }
+   }
+}
+
+.item-active.center{
+   .campaign-five{
+      &__progress{
+         .progress{
+            border-color: $theme-color-2;
+            .progress-bar{
+               background: $theme-color-2;
+               &:after{
+                  border-color: $theme-color-2;
+               }
+            }
+            .percentage{
+               background: $theme-color-2;
+               &:after{
+                  border-top-color: $theme-color-2;
+               }
+            }
+         }
+      }
+      &__btn-donate{
+         opacity: 1;
+      }
+   }
+}
+
+// Totals one
+.campaign-totals-one{
+   margin-bottom: 30px; 
+   position: relative;
+   
+   &__content{
+      position: relative;
+      z-index: 2;
+   }
+   &__title{
+      font-size: 24px;
+      margin: 0 0 55px;
+      line-height: 32px; 
+      @include media-breakpoint-down(lg){
+         font-size: 20px;
+      }
+   }
+   &__progress{
+      margin-top: 4px;
+      .progress{
+         height: 8px;
+         border: 1px solid $theme-color;
+         background: $white;
+         overflow: visible;
+         .progress-bar{
+            background: $theme-color;
+            position: relative;
+            overflow: visible!important;
+            transition: none!important;
+            &:after{
+               content: '';
+               width: 12px;
+               height: 12px;
+               border-radius: 50%;
+               background: $white;
+               border: 2px solid $theme-color;
+               position: absolute;
+               right: -6px;
+               top: -3px;
+               z-index: 3;
+            }
+         }
+         .percentage{
+            position: absolute;
+            bottom: 100%;
+            left: 100%;
+            z-index: 1;
+            padding: 4px 8px 5px;
+            background: $theme-color;
+            font-size: 11px;
+            color: $white;
+            margin-bottom: 11px;
+            line-height: 1;
+            font-weight: 600;
+            border-radius: 5px 5px 5px 0;
+            &:after{
+               content: "";
+               border: 6px solid transparent;
+               border-top-color: $theme-color;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               z-index: 1;
+               transform: rotate(-90deg);
+               margin-top: -6px;
+            }
+            &.percentage-left{
+               left: auto;
+               right: 0;
+               &:after{
+                  right: 0;
+                  left: auto;
+                  transform: rotate(90deg);
+                  margin-right: 2px;
+               }
+            }
+         }
+      }
+   }
+   &__information{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 4px;
+   }
+   &__raised{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__percent-raised{
+      color: $theme-color-2;
+   }
+   &__goal{
+      font-size: 12px;
+      font-weight: 700;
+      color: $headings-color;
+   }
+   &__action{
+      margin-top: 25px;
+      &.btn-donate-white{
+         .givewp-donation-form-modal__open{
+            background: $white;
+            color: $headings-color!important;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0);
+            &:before{
+               background: $theme-color;
+               color: $white;
+            }
+            &:hover, &:focus, &:active{
+               box-shadow: inset 0 0 20px rgba(0, 0, 0, .5), 0 0 20px rgba(0, 0, 0, .2);
+            }
+         }
+      }
+   }
+} 
+
+.item-statistics{
+   text-align: center;
+   margin-bottom: 15px;
+   background: $white;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+   padding: 20px 10px;
+   .title-text{
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 13px;
+      line-height: 20px;
+   }
+   .givewp-campaign-stats-block{
+      span{
+         display: none;
+      }
+   }
+}
+
+.item-campaign-donations{
+   text-align: center;
+   .givewp-donation-form-modal__open{
+      &:before{
+         background: #f1f1f1;
+      }
+   }
+}
+
+.item-campaign-donors{
+   text-align: center;
+   .givewp-donation-form-modal__open{
+      &:before{
+         background: #f1f1f1;
+      }
+   }
+}
+
+.item-donate-button{
+   .givewp-donation-form-modal__open{
+      width: auto;
+      padding: 6px 30px 6px 6px !important;
+      &:hover, &:focus, &:active{
+         background: $theme-color!important;
+      }
+   }
+}

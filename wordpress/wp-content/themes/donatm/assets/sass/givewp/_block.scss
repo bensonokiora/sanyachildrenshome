@@ -1,0 +1,69 @@
+.givewp-donation-form, body{
+	font-family: $font-family-base;
+}
+
+.givewp-donation-form-modal__open{
+	background: $theme-color;
+	color: #fff;
+	padding: 4px 25px 4px 4px!important;
+	line-height: 38px;
+	font-size: 16px;
+	border-radius: 50px;
+	z-index: 9;
+	display: inline-block;
+	white-space: nowrap;
+	border: none;
+	position: relative;
+	overflow: hidden;
+	transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+	box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+	font-family: $font-family-base;
+	font-weight: 600!important;
+	&:before{
+		content: "\f148";
+		font-family: $font-icon-theme; 
+		width: 38px;
+		height: 38px;
+		background: $white;
+		color: $theme-color;
+		margin-right: 10px;
+		border-radius: 50%;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.35s;
+		font-size: 20px;
+		font-weight: 400!important;
+	}
+	&:hover, &:focus{
+		color: $white;
+		box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+	}
+	&:active{
+		top: 2px;
+	}
+}
+
+.givewp-donation-form__steps{
+	max-width: 800px;
+	margin-bottom: 30px;
+}
+.givewp-layouts-header{
+	border: none!important;
+}
+.givewp-layouts-header__templates-ms--background{
+	.givewp-layouts-header__content{
+		padding: 65px 60px 40px!important;
+		margin-bottom: 30px;
+		@media(max-width: 1200px){
+			padding: 65px 15px 40px!important;
+		}
+		.givewp-layouts-headerDescription{
+			color: rgba(255, 255, 255, 0.9)!important;
+			font-weight: 400;
+		}
+	}
+}
+.givewp-campaign-donations-block .givewp-campaign-donations-block__donation, .givewp-campaign-donations-block .givewp-campaign-donations-block__empty-state{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}

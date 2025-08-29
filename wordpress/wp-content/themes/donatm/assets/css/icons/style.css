@@ -1,0 +1,405 @@
+@font-face {
+  font-family: 'dicomoon';
+  src:  url('./icomoon.eot?9ftyf');
+  src:  url('./icomoon.eot?9ftyf#iefix') format('embedded-opentype'),
+    url('./icomoon.ttf?9ftyf') format('truetype'),
+    url('./icomoon.woff?9ftyf') format('woff'),
+    url('./icomoon.svg?9ftyf#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="dicon-"], [class*=" dicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dicomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dicon-handshake:before {
+  content: "\f114";
+}
+.dicon-thumbs-up:before {
+  content: "\f115";
+}
+.dicon-stethoscope-1:before {
+  content: "\f107";
+}
+.dicon-share:before {
+  content: "\f135";
+}
+.dicon-contact:before {
+  content: "\f133";
+}
+.dicon-location-1:before {
+  content: "\f132";
+}
+.dicon-crowdfunding:before {
+  content: "\f120";
+}
+.dicon-pin-1:before {
+  content: "\f103";
+}
+.dicon-increment:before {
+  content: "\f111";
+}
+.dicon-chat:before {
+  content: "\f126";
+}
+.dicon-pin-2:before {
+  content: "\f134";
+}
+.dicon-translation:before {
+  content: "\f106";
+}
+.dicon-chat-1:before {
+  content: "\f128";
+}
+.dicon-entrepreneur:before {
+  content: "\f131";
+}
+.dicon-crowdfunding-1:before {
+  content: "\f125";
+}
+.dicon-location:before {
+  content: "\f130";
+}
+.dicon-creativity:before {
+  content: "\f117";
+}
+.dicon-graphic-designer:before {
+  content: "\f10a";
+}
+.dicon-mission-1:before {
+  content: "\f10e";
+}
+.dicon-photograph:before {
+  content: "\f105";
+}
+.dicon-checked:before {
+  content: "\f137";
+}
+.dicon-skincare:before {
+  content: "\f108";
+}
+.dicon-minus:before {
+  content: "\f12a";
+}
+.dicon-mission:before {
+  content: "\f10d";
+}
+.dicon-team:before {
+  content: "\f10f";
+}
+.dicon-team-1:before {
+  content: "\f110";
+}
+.dicon-cancer:before {
+  content: "\e800";
+}
+.dicon-charity:before {
+  content: "\e801";
+}
+.dicon-family:before {
+  content: "\e802";
+}
+.dicon-hamburger:before {
+  content: "\e803";
+}
+.dicon-health:before {
+  content: "\e804";
+}
+.dicon-heart:before {
+  content: "\e805";
+}
+.dicon-mortarboard:before {
+  content: "\e807";
+}
+.dicon-peace-1:before {
+  content: "\e809";
+}
+.dicon-peace:before {
+  content: "\e80a";
+}
+.dicon-pet:before {
+  content: "\e80b";
+}
+.dicon-praying:before {
+  content: "\e80c";
+}
+.dicon-stethoscope:before {
+  content: "\e80d";
+}
+.dicon-target:before {
+  content: "\e80e";
+}
+.dicon-water-bottle:before {
+  content: "\e80f";
+}
+.dicon-phone-call:before {
+  content: "\f113";
+}
+.dicon-chat-2:before {
+  content: "\f118";
+}
+.dicon-donation-1:before {
+  content: "\f12b";
+}
+.dicon-adoption:before {
+  content: "\f12c";
+}
+.dicon-support:before {
+  content: "\f112";
+}
+.dicon-message:before {
+  content: "\f116";
+}
+.dicon-right-arrow-2:before {
+  content: "\f10b";
+}
+.dicon-exploration:before {
+  content: "\f102";
+}
+.dicon-college-graduation:before {
+  content: "\f11b";
+}
+.dicon-charity-2:before {
+  content: "\f11d";
+}
+.dicon-checked-2:before {
+  content: "\f10c";
+}
+.dicon-message-1:before {
+  content: "\f119";
+}
+.dicon-selection:before {
+  content: "\f100";
+}
+.dicon-fundraiser:before {
+  content: "\f11e";
+}
+.dicon-generous:before {
+  content: "\f121";
+}
+.dicon-comment:before {
+  content: "\f11a";
+}
+.dicon-delete:before {
+  content: "\f101";
+}
+.dicon-maternity:before {
+  content: "\f124";
+}
+.dicon-quote:before {
+  content: "\f109";
+}
+.dicon-clipboard:before {
+  content: "\f11c";
+}
+.dicon-right-arrow-1:before {
+  content: "\f11f";
+}
+.dicon-cheque:before {
+  content: "\f127";
+}
+.dicon-coin:before {
+  content: "\f122";
+}
+.dicon-water:before {
+  content: "\f123";
+}
+.dicon-left-arrow-1:before {
+  content: "\f129";
+}
+.dicon-heart-2:before {
+  content: "\f104";
+}
+.dicon-heart-1:before {
+  content: "\f12d";
+}
+.dicon-fast-food:before {
+  content: "\f12e";
+}
+.dicon-phone-2:before {
+  content: "\f12f";
+}
+.dicon-handshake-2:before {
+  content: "\f136";
+}
+.dicon-address:before {
+  content: "\f138";
+}
+.dicon-left-arrow-2:before {
+  content: "\f139";
+}
+.dicon-shopping-cart:before {
+  content: "\f13a";
+}
+.dicon-charity-1:before {
+  content: "\f13b";
+}
+.dicon-focus:before {
+  content: "\f13c";
+}
+.dicon-magnifying-glass:before {
+  content: "\f13d";
+}
+.dicon-donation:before {
+  content: "\f13e";
+}
+.dicon-check:before {
+  content: "\f13f";
+}
+.dicon-dove:before {
+  content: "\f140";
+}
+.dicon-graduation:before {
+  content: "\f141";
+}
+.dicon-health-check:before {
+  content: "\f142";
+}
+.dicon-star:before {
+  content: "\f143";
+}
+.dicon-email:before {
+  content: "\f144";
+}
+.dicon-shopping-cart-2:before {
+  content: "\f145";
+}
+.dicon-search-interface-symbol:before {
+  content: "\f146";
+}
+.dicon-down:before {
+  content: "\f147";
+}
+.dicon-right:before {
+  content: "\f148";
+}
+.dicon-play-button-arrowhead:before {
+  content: "\f149";
+}
+.dicon-volunteering:before {
+  content: "\f14a";
+}
+.dicon-apartment:before {
+  content: "\f14b";
+}
+.dicon-world:before {
+  content: "\f14c";
+}
+.dicon-insurance-agent:before {
+  content: "\f14d";
+}
+.dicon-quotes:before {
+  content: "\f14e";
+}
+.dicon-tag:before {
+  content: "\f14f";
+}
+.dicon-bubble-chat:before {
+  content: "\f150";
+}
+.dicon-maps-and-flags:before {
+  content: "\f151";
+}
+.dicon-email-2:before {
+  content: "\f152";
+}
+.dicon-telephone-call:before {
+  content: "\f153";
+}
+.dicon-email-1:before {
+  content: "\f154";
+}
+.dicon-calendar:before {
+  content: "\f155";
+}
+.dicon-facebook-app-symbol:before {
+  content: "\f156";
+}
+.dicon-twitter:before {
+  content: "\f157";
+}
+.dicon-linkedin:before {
+  content: "\f158";
+}
+.dicon-youtube:before {
+  content: "\f159";
+}
+.dicon-up-arrow:before {
+  content: "\f15a";
+}
+.dicon-user:before {
+  content: "\f15b";
+}
+.dicon-solidarity:before {
+  content: "\f15c";
+}
+.dicon-donation-2:before {
+  content: "\f15d";
+}
+.dicon-clock:before {
+  content: "\f15e";
+}
+.dicon-share:before {
+  content: "\f15f";
+}
+.dicon-straight-quotes:before {
+  content: "\f160";
+}
+.dicon-teamwork:before {
+  content: "\f161";
+}
+.dicon-call:before {
+  content: "\f162";
+}
+.dicon-healthy-food:before {
+  content: "\f163";
+}
+.dicon-rating:before {
+  content: "\f164";
+}
+.dicon-checked-3:before {
+  content: "\f165";
+}
+.dicon-menu:before {
+  content: "\f166";
+}
+.dicon-camera:before {
+  content: "\f167";
+}
+.dicon-movie:before {
+  content: "\f168";
+}
+.dicon-warning:before {
+  content: "\f169";
+}
+.dicon-star-1:before {
+  content: "\f16a";
+}
+.dicon-check-2:before {
+  content: "\f16b";
+}
+.dicon-plus:before {
+  content: "\f16c";
+}
+.dicon-placeholder:before {
+  content: "\f16d";
+}
+.dicon-email-3:before {
+  content: "\f16e";
+}
+.dicon-hide:before {
+  content: "\f16f";
+}
