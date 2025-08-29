@@ -165,6 +165,9 @@ RUN a2enmod rewrite expires remoteip
 # For now, we copy the pre-existing directory.
 COPY WordPress-new /var/www/html
 
+# Copy wp-content to a temporary location for volume initialization
+RUN cp -r /var/www/html/wp-content /tmp/wp-content-init
+
 # Ensure correct permissions (adjust if necessary based on your WordPress setup)
 # RUN chown -R www-data:www-data /var/www/html
 
