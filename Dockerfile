@@ -20,12 +20,12 @@ RUN set -eux; \
 		libpng16-16 \
 		libwebp7 \
 # Needed for intl:
-		libicu76 \
+		libicu72 \
 # Needed for imagick:
-		libmagickcore-6.q16-7 \
-		libmagickwand-6.q16-7 \
+		libmagickcore-6.q16-6 \
+		libmagickwand-6.q16-6 \
 # Needed for zip:
-		libzip4t64 \
+		libzip4 \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -132,13 +132,13 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		ghostscript \
 		libfreetype6 \
-		libicu76 \
+		libicu72 \
 		libjpeg62-turbo \
-		libmagickcore-6.q16-7 \
-		libmagickwand-6.q16-7 \
+		libmagickcore-6.q16-6 \
+		libmagickwand-6.q16-6 \
 		libpng16-16 \
 		libwebp7 \
-		libzip4t64 \
+		libzip4 \
 # Install apache utilities needed for module enabling if not present
 		apache2-utils \
 	; \
