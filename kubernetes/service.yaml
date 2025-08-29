@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sanya-children-home-service
+spec:
+  selector:
+    app: sanyachildrenshome
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
