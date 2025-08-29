@@ -39,8 +39,6 @@ spec:
           image: registry.gitlab.com/__DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
           imagePullPolicy: Always
           securityContext:
-            runAsUser: 33  # www-data user ID
-            runAsGroup: 33  # www-data group ID
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: false
           resources:
