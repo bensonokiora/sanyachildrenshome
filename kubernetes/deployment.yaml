@@ -41,13 +41,13 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: false
-          resources:
-            requests:
-              cpu: "20m"        # Baseline CPU request
-              memory: "300Mi"    # Baseline memory request
-            limits:
-              cpu: "100m"        # Max CPU limit (4x request)
-              memory: "400Mi"    # Max memory limit (2x request)
+          # resources:
+          #   requests:
+          #     cpu: "20m"        # Baseline CPU request
+          #     memory: "300Mi"    # Baseline memory request
+          #   limits:
+          #     cpu: "100m"        # Max CPU limit (4x request)
+          #     memory: "400Mi"    # Max memory limit (2x request)
           volumeMounts:
           - name: sanyachildrenshome-volume
             mountPath: "/var/www/html/wp-content"      
